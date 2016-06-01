@@ -4,6 +4,8 @@ MAINTAINER Benoit Theunissen <benoit.theunissen@gmail.com>
 
 WORKDIR /etc/httpd/
 
+RUN touch /var/lib/rpm/*
+
 RUN yum install -y httpd mod_perl mod_ssl libapreq2 \
   && yum clean all
 

@@ -7,8 +7,9 @@ WORKDIR /etc/httpd/
 # Fix Rpmdb checksum is invalid
 RUN touch /var/lib/rpm/*
 
-RUN (yum install -y httpd mod_perl mod_ssl libapreq2) || (yum install -y httpd mod_perl mod_ssl libapreq2) \
-  && yum clean all
+RUN (yum install -y httpd mod_perl mod_ssl) || (yum install -y httpd mod_perl mod_ssl) \
+
+#  && yum clean all
 
 COPY httpd-foreground /usr/local/bin/
 

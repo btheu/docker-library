@@ -1,0 +1,2 @@
+* * * * * root echo "$(date) Hello world" >> /var/log/cron.log 2>&1
+* * * * * root . /opt/upchecker.sh

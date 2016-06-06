@@ -4,8 +4,12 @@ MAINTAINER Benoit Theunissen <benoit.theunissen@gmail.com>
 
 WORKDIR /etc/httpd/
 
-RUN yum install -y httpd mod_perl mod_ssl libapreq2 \
-  && yum clean all
+# Fix Rpmdb checksum is invalid
+RUN touch /var/lib/rpm/*
+
+RUN (yum install -y httpd mod_perl mod_ssl) || true
+
+#  && yum clean all
 
 COPY httpd-foreground /usr/local/bin/
 

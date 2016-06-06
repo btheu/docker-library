@@ -1,0 +1,11 @@
+
+version: '2'
+
+services:
+  
+  upchecker:
+    build: .
+#    add_hosts:
+#      - ""
+    environment:
+      - "MUTT_SMTP_PASS=utilsGmail123"

@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 MAINTAINER Benoit Theunissen <benoit.theunissen@gmail.com>
  
-RUN apt-get update && apt-get -y install cron
+RUN apt-get update && apt-get -y install cron nano mutt at curl wget
 
 # Add crontab file in the cron directory
 ADD crontab /etc/cron.d/upcheck-cron
@@ -22,3 +22,5 @@ WORKDIR /opt
 ADD upchecker.sh /opt/
 
 RUN chmod +x /opt/upchecker.sh
+
+ADD muttrc /root/.muttrc

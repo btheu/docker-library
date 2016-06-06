@@ -9,3 +9,5 @@ fi
 export NB_FAILS=$(( $NB_FAILS + 1 ))
 
 echo "NB FAILS: $NB_FAILS" >> /var/log/cron.log 2>&1
+
+echo "Contenu du message" | mutt -s "TEST $(date)" NMcFly@gmail.com >> /var/log/cron.log 2>&1

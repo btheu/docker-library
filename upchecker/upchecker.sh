@@ -87,7 +87,7 @@ then
   NB_FAILS=$(set_variable "NB_FAILS" 0)
 fi
 
-wget -q -t 1 --timeout=${UPCHECKER_TIMEOUT_SEC:-10} ${UPCHECKER_APPLICATION_URL}
+wget -q -t ${UPCHECKER_RETRIES} --timeout=${UPCHECKER_TIMEOUT_SEC:-10} ${UPCHECKER_APPLICATION_URL}
 SUCCESS_CODE=$?
 
 if [ $SUCCESS_CODE -eq 0 ]

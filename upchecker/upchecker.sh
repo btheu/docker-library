@@ -72,7 +72,7 @@ send_mail_up(){
 
 log(){
 
-  echo $@  >> $LOG_FILE 2>&1
+  echo "$(date) $@"  >> $LOG_FILE 2>&1
 
 }
 
@@ -83,11 +83,11 @@ NB_FAILS=$(get_variable "NB_FAILS")
 
 if [ -z $NB_FAILS ]
 then
-  log "Create NB FAILS variable"
+  log "Create UpChecker database entry."
   NB_FAILS=$(set_variable "NB_FAILS" 0)
 fi
 
-wget -q ${UPCHECKER_APPLICATION_URL}
+wget -q -t 1 --timeout=${UPCHECKER_TIMEOUT_SEC:-10} ${UPCHECKER_APPLICATION_URL}
 SUCCESS_CODE=$?
 
 if [ $SUCCESS_CODE -eq 0 ]
@@ -109,7 +109,7 @@ else
 
   NB_FAILS=$(set_variable "NB_FAILS" $(( $NB_FAILS + 1 )) )
 
-  if [ $NB_FAILS -lt ${UPCHECKER_ALERT_THRESHOLD} ]
+  if [ $NB_FAILS -le ${UPCHECKER_ALERT_THRESHOLD} ]
   then
     log "Application is down ($NB_FAILS/${UPCHECKER_ALERT_THRESHOLD}). Sending mail."
     send_mail_down $NB_FAILS
@@ -120,12 +120,6 @@ else
 
   fi
 fi
-
-send_mail "TEST $(date)" "Contenu du message"
-
-
-
-
 
 
 

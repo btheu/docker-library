@@ -1,5 +1,5 @@
 # configuration de base
-set realname = "Root"
+set realname = "UpChecker"
 set header_cache =~/.mutt/cache/headers
 set certificate_file =~/.mutt/certificates
 set message_cachedir =~/.mutt/cache/bodies

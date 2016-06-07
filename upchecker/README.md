@@ -29,6 +29,7 @@ A compose file looks like:
         - "UPCHECKER_APPLICATION_URL=http://192.168.0.1:8080/app1/" # the URL to test
         - "UPCHECKER_ALERT_THRESHOLD=3"
         - "UPCHECKER_TIMEOUT_SEC=5" # 5 secondes
+        - "UPCHECKER_RETRIES=2"
         - "UPCHECKER_CRON=*/2 * * * *" # checks every 2 minutes
         - "UPCHECKER_DEBUG=yes"
       volumes:

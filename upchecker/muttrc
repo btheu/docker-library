@@ -4,7 +4,7 @@ set header_cache =~/.mutt/cache/headers
 set certificate_file =~/.mutt/certificates
 set message_cachedir =~/.mutt/cache/bodies
 
-set ssl_starttls = "no"
+set ssl_starttls = "${UPCHECKER_TLS_START}"
 
 # configuration imap
 set spoolfile=imaps://${UPCHECKER_IMAP_HOST}:${UPCHECKER_IMAP_PORT}/INBOX
@@ -17,7 +17,7 @@ set imap_list_subscribed="yes"
 # configuration SMTP
 #set smtp_url  = "smtp://${UPCHECKER_SMTP_USER}@${UPCHECKER_SMTP_HOST}:${UPCHECKER_SMTP_PORT}/"
 
-set smtp_url  = "smtp://${UPCHECKER_SMTP_HOST}:${UPCHECKER_SMTP_PORT}/"
+set smtp_url  = "smtp://${UPCHECKER_SMTP_URI}/"
 
 set smtp_pass = "${UPCHECKER_SMTP_PASS}"
 set from = "${UPCHECKER_MAIL_FROM}"

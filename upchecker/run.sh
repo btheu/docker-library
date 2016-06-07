@@ -9,6 +9,20 @@ then
   cat /etc/cron.d/upcheck-cron
 fi
 
+export UPCHECKER_TLS_START="yes"
+
+
+if [ -z ${UPCHECKER_SMTP_USER} ]
+then
+
+  export UPCHECKER_SMTP_URI="${UPCHECKER_SMTP_HOST}:${UPCHECKER_SMTP_PORT}"
+
+else
+
+  export UPCHECKER_SMTP_URI="${UPCHECKER_SMTP_USER}@${UPCHECKER_SMTP_HOST}:${UPCHECKER_SMTP_PORT}"
+
+fi
+
 
 cat /opt/muttrc | envsubst > /root/.muttrc
 

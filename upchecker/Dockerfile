@@ -2,14 +2,7 @@ FROM ubuntu:latest
 
 MAINTAINER Benoit Theunissen <benoit.theunissen@gmail.com>
  
-RUN apt-get update && apt-get -y install cron nano mutt at curl wget
-
-ENV HTTP_PROXY=http://fr-proxy.groupinfra.com:3128
-ENV HTTPS_PROXY=https://fr-proxy.groupinfra.com:3128
-
-RUN echo "Acquire::http::Proxy \"${HTTP_PROXY}\";" >> /etc/apt/apt.conf
-
-RUN apt-get update && apt-get install -y gettext
+RUN apt-get update && apt-get -y install nano cron gettext mutt at curl wget
 
 WORKDIR /opt/upchecker
 

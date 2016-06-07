@@ -4,26 +4,29 @@ set header_cache =~/.mutt/cache/headers
 set certificate_file =~/.mutt/certificates
 set message_cachedir =~/.mutt/cache/bodies
 
-set ssl_starttls = "yes"
+set ssl_starttls = "no"
 
 # configuration imap
-set spoolfile=imaps://imap.gmail.com:993/INBOX
-set imap_user = "${MUTT_SMTP_USER}"
-set imap_pass ="${MUTT_SMTP_PASS}"
+set spoolfile=imaps://${UPCHECKER_IMAP_HOST}:${UPCHECKER_IMAP_PORT}/INBOX
+set imap_user = "${UPCHECKER_IMAP_USER}"
+set imap_pass = "${UPCHECKER_IMAP_PASS}"
 set imap_passive="no"
 set imap_check_subscribed="yes"
 set imap_list_subscribed="yes"
 
 # configuration SMTP
-set smtp_url = "smtp://${MUTT_SMTP_USER}@smtp.gmail.com:587/"
-set smtp_pass ="${MUTT_SMTP_PASS}"
-set from = "${MUTT_SMTP_FROM}"
+#set smtp_url  = "smtp://${UPCHECKER_SMTP_USER}@${UPCHECKER_SMTP_HOST}:${UPCHECKER_SMTP_PORT}/"
+
+set smtp_url  = "smtp://${UPCHECKER_SMTP_HOST}:${UPCHECKER_SMTP_PORT}/"
+
+set smtp_pass = "${UPCHECKER_SMTP_PASS}"
+set from = "${UPCHECKER_MAIL_FROM}"
 set use_envelope_from=yes # Pour que postfix ou sendmail ne change pas votre from
 
 # petit plus
-set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
+set trash = "imaps://${UPCHECKER_IMAP_HOST}/[Gmail]/Trash"
 set postponed="+[Gmail]/Draft"
-set folder = "imaps://imap.gmail.com:993/"
+set folder = "imaps://${UPCHECKER_IMAP_HOST}:${UPCHECKER_IMAP_PORT}/"
 set imap_check_subscribed
 set mail_check = 120
 set timeout = 300

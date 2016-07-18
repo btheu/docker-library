@@ -1,4 +1,4 @@
-FROM java:9-jre-alpine
+FROM java:9-jre
 
 MAINTAINER Benoit Theunissen <benoit.theunissen@gmail.com>
 

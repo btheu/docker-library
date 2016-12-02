@@ -15,7 +15,7 @@ ENV LIFERAY_MAJOR 6
 
 ENV LIFERAY_VERSION 6.2.5-GA6
 
-ENV LIFERAY_ZIP_URL https://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.2.5%20GA6/liferay-portal-jboss-6.2-ce-ga6-20160112152609836.zip/download
+ENV LIFERAY_ZIP_URL https://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.2.5%20GA6/liferay-portal-jboss-6.2-ce-ga6-20160112152609836.zip
 
 RUN set -x \
 	\
@@ -26,3 +26,9 @@ RUN mv liferay-portal-6.2-ce-ga6/* . \
   && rm -rf liferay-portal-6.2-ce-ga6 \
 	&& rm -f  jboss-7.1.1/bin/*.bat \
 	&& rm liferay.zip
+
+EXPOSE 8080
+
+ENTRYPOINT ["/usr/local/liferay-portal/jboss-7.1.1/bin/standalone.sh"]
+
+ADD standalone.xml $LIFERAY_HOME/jboss-7.1.1/standalone/configuration
